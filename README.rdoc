@@ -12,15 +12,8 @@ Automatically push/delete a model's email address and custom-fields to a Campaig
 Specify the model's email address field name. You can also pass additional custom fields:
 
   Class User < ActiveRecord::Base
-    subscribe_me_using :email, {"name" => "full_name", "UserStatus" => "get_status"}
+    belongs_to_mailinglist
   end
-
-This will call `full_name` and `get_status` methods on record which was created using `send`.
-
-Set the list id & api key in config/campaign_monitor_subscriber_config.yml:
-  list_id: 12oeu0089oe8gf9794oe498587o5
-  api_key: 23rbmoe351sd123d12134hbi1234
-	development: false # disable in development
 
 Thats it!
 
@@ -31,8 +24,9 @@ Thats it!
 == INSTALL:
 
 Just add this to your Gemfile:
-  gem 'campaigning', '0.15.0' 
-  gem 'campaign_monitor_subscriber', :git => "git@github.com:anwajler/campaign_monitor_subscriber.git", :branch => "rails3"
+  gem 'soap4r', :git => 'git://github.com/felipec/soap4r.git'
+  gem 'campaigning'
+  gem 'campaign_monitor_subscriber', :git => "git@github.com:ericgoodwin/campaign_monitor_subscriber.git"
 
 
 == LICENSE:
